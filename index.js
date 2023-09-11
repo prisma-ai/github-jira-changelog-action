@@ -51,7 +51,7 @@ Unkown Tickets (not found in Jira)
 Other Commits
 ---------------------
 <% commits.forEach((commit) => { %>
-  * <%= commit.slackUser ? '@'+commit.slackUser.name : commit.authorName %> - [<%= commit.revision.substr(0, 7) %>] - <%= commit.summary -%>
+  * <%= commit.message -%>
 <% }); -%>
 <% if (!commits.length) {%> ~ None ~ <% } %>
 `;
