@@ -4,8 +4,9 @@ const _ = require('lodash');
 const Entities = require('html-entities');
 const ejs = require('ejs');
 const Haikunator = require('haikunator');
-const { SourceControl, Jira } = require('jira-changelog');
+const Jira = require('jira-changelog');
 const RegExpFromString = require('regexp-from-string');
+const git = require('simple-git/promise')();
 
 const config = {
   jira: {
@@ -67,12 +68,11 @@ function generateReleaseVersionName() {
 
 async function getIssues() {
   // Get commits for a range
-  const source = new SourceControl(config);
   const jira = new Jira(config);
 
   const range = config.sourceControl.defaultRange;
   console.log(`Getting range ${range.from}...${range.to} commit logs`);
-  const commitLogs = await source.getCommitLogs('./', range);
+  const commitLogs = await git.log({ from: range.from, to: range.to });
 
   const issues = new Map();
   const unknownIssues = new Map();
