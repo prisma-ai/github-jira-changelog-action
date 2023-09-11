@@ -6,7 +6,7 @@ const ejs = require('ejs');
 const Haikunator = require('haikunator');
 const { Jira } = require('jira-changelog');
 const RegExpFromString = require('regexp-from-string');
-const git = require('simple-git/promise')();
+const git = require('simple-git')();
 
 const config = {
   jira: {
@@ -78,7 +78,7 @@ async function getIssues() {
   const unknownIssues = new Map();
   const commits = [];
 
-  for (const commit of commitLogs) {
+  for (const commit of commitLogs.all) {
     const match = config.jira.ticketIDPattern.exec(commit.summary);
     if (match) {
       const ticketId = match[1];
