@@ -41,10 +41,10 @@ Jira Tickets
 <% }); -%>
 <% if (!tickets.size) {%> ~ None ~ <% } %>
 
-Unkown Tickets (not found in Jira)
+Unknown Tickets (not found in Jira)
 ---------------------
 <% unknownTickets.forEach((ticket) => { %>
-  * <%= ticket.summary -%>
+  * <%= ticket.message -%>
 <% }); -%>
 <% if (!unknownTickets.size) {%> ~ None ~ <% } %>
 `;
