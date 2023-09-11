@@ -47,13 +47,6 @@ Unkown Tickets (not found in Jira)
   * <%= ticket.summary -%>
 <% }); -%>
 <% if (!unknownTickets.size) {%> ~ None ~ <% } %>
-
-Other Commits
----------------------
-<% commits.forEach((commit) => { %>
-  * <%= commit.message -%>
-<% }); -%>
-<% if (!commits.length) {%> ~ None ~ <% } %>
 `;
 
 function generateReleaseVersionName() {
@@ -79,7 +72,7 @@ async function getIssues() {
   const commits = [];
 
   for (const commit of commitLogs.all) {
-    const match = config.jira.ticketIDPattern.exec(commit.summary);
+    const match = config.jira.ticketIDPattern.exec(commit.message);
     if (match) {
       const ticketId = match[1];
 
