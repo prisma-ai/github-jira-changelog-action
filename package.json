@@ -4,6 +4,7 @@
   "description": "Generates a changelog message by looking at Jira issue keys ([DEV-123]) in commit messages.",
   "main": "index.js",
   "scripts": {
+    "index.js": "node index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -26,6 +27,6 @@
     "jira-changelog": "1.5.0",
     "lodash": "4.17.15",
     "regexp-from-string": "0.1.0",
-    "simple-git": "3.19.1"
+    "simple-git": "3.20.0"
   }
 }

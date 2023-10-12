@@ -76,7 +76,7 @@ async function getIssues() {
     if (match) {
       const ticketId = match[1];
 
-      if (issues.has(ticketId)) {
+      if (issues.has(ticketId) || unknownIssues.has(ticketId)) {
         continue;
       }
 
